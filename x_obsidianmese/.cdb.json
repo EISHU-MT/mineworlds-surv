@@ -1,0 +1,17 @@
+{
+    "type": "MOD",
+    "title": "X Obsidianmese",
+    "name": "x_obsidianmese",
+    "short_description": "Adds obsidian and mese tools and items.",
+    "dev_state": "MAINTENANCE_ONLY",
+    "tags": [
+        "pvp",
+        "shooter",
+        "survival",
+        "tools"
+    ],
+    "license": "LGPL-2.1-or-later",
+    "media_license": "CC-BY-SA-4.0",
+    "repo": "https://bitbucket.org/minetest_gamers/x_obsidianmese/src/master/",
+    "issue_tracker": "https://bitbucket.org/minetest_gamers/x_obsidianmese/issues?status=new&status=open"
+}

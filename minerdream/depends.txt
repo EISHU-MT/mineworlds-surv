@@ -1,0 +1,7 @@
+default
+shields
+mana
+3d_armor
+awards?
+hbhunger?
+hunger?

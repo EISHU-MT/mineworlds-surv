@@ -1,0 +1,18 @@
+{
+    "type": "MOD",
+    "title": "X Farming",
+    "name": "x_farming",
+    "short_description": "Extends default farming with new plants, crops and ice fishing.",
+    "tags": [
+        "decorative",
+        "food",
+        "mobs",
+        "plants_and_farming",
+        "survival"
+    ],
+    "license": "GPLv2",
+    "media_license": "CC BY-SA 4.0",
+    "repo": "https://bitbucket.org/minetest_gamers/x_farming/src/master",
+    "issue_tracker": "https://bitbucket.org/minetest_gamers/x_farming/issues",
+    "forums": 26464
+}

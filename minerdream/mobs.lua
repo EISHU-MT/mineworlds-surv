@@ -1,0 +1,1 @@
+core.log("action", "Mobs disabled by EHS (EISHU Hosting System)")
