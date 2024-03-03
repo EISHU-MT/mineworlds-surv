@@ -1,0 +1,5 @@
+# textdomain: reports
+Invalid usage, usage: /report player reason=Argumentos invalidos, como se usa: /report jugador rason
+Report have been sent!=El reporte ha sido enviado!
+Annoucement have been sent!=El anuncio ha sido enviado!
+Invalid usage, usage: /annouce thing=Uso invalido, como se usa: /annouce algo

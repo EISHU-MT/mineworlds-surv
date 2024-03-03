@@ -1,0 +1,15 @@
+# textdomain: emoney
+Bank=Banco
+Transfer=Transferir
+Amount=Cuanto
+Deposit=Depositar
+Transfer log=Reg. de transferencias
+Income log=Reg. de plata
+Withdraw=Retiro
+Could not understand your request, did you type correctly the player name and the amount?=No se pudo procesar la transferencia, escribiste bien el monto y el jugador?
+No enough money found in your inventory=No hay plata suficiente en tu inventario
+No enough space left in your inventory!=No hay suficiente espacio en tu inventario!
+No enough money left in your bank account!=No Hay Plata
+This function is disabled [MAX]=Esta funcion esta deshabilitada
+Transfer to=Transferir a:
+Server dropped @1 on every players!=El servidor a donado @1 dolares!

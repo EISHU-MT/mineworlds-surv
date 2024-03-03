@@ -1,0 +1,6 @@
+# textdomain: afk
+@1 came back!=@1 Ha vuelto de estar AFK!
+Status: off:=Estado: no afk
+@1 is afk!=@1 Esta AFK!
+Status: on:=Estado: estando AFK
+@1 is afk! (after 5mins)=@1 Esta AFK! (Despues de 5mins)
