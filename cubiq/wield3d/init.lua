@@ -88,9 +88,11 @@ local function add_wield_entity(player, force)
 	end
 	local name = player:get_player_name()
 	local pos = player:get_pos()
-	if name and pos and not (force or player_wielding[name]) then
+	if name and pos then
 		pos.y = pos.y + 0.5
-		local object = minetest.add_entity(pos, "wield3d:wield_entity", name)
+		local object = minetest.add_entity(pos, "wield3d:wield_entity")
+		local l = object:get_luaentity()
+		l.wielder = name
 		if object then
 			object:set_attach(player, location[1], location[2], location[3])
 			object:set_properties({
@@ -121,14 +123,6 @@ local wield_entity = {
 	wield_hand = true
 }
 
-function wield_entity:on_activate(staticdata)
-	if staticdata and staticdata ~= "" then
-		self.wielder = staticdata
-		return
-	end
-	self.object:remove()
-end
-
 --function wield3d.do_reset_everyone_hand
 
 function wield_entity:on_step(dtime)
@@ -141,10 +135,8 @@ function wield_entity:on_step(dtime)
 		return
 	end
 	local player = minetest.get_player_by_name(self.wielder)
-	if player == nil or not player:is_player() or
-			sq_dist(player:get_pos(), self.object:get_pos()) > 3 then
+	if player == nil or not player:is_player() or sq_dist(player:get_pos(), self.object:get_pos()) > 3 then
 		self.object:remove()
-		--wield3d.do_reset_everyone_hand()
 		return
 	end
 	local wield = player_wielding[self.wielder]
@@ -188,22 +180,22 @@ local function table_iter(t)
 end
 
 local player_iter = nil
-
+--[[
 local clock = 0
 core.register_globalstep(function(dt)
 	clock = clock + dt
 	if clock >= 1 then
 		--for name, data in pairs(player_wielding) do
 		for _, p in pairs(core.get_connected_players()) do
-            if p:get_player_name() and player_wielding[p:get_player_name()] and not (player_wielding[p:get_player_name()].object or player_wielding[p:get_player_name()].object:get_yaw() == nil) then
+			if p:get_player_name() and player_wielding[p:get_player_name()] and not (player_wielding[p:get_player_name()].object or player_wielding[p:get_player_name()].object:get_yaw() == nil) then
 				add_wield_entity(Player(name), true)
 				core.log("action", "ReAdding player wieldhand for: "..name)
 			end
-        end
+		end
 		--end
 		clock = 0
 	end
-end)
+end)--]]
 
 minetest.register_entity("wield3d:wield_entity", wield_entity)
 
