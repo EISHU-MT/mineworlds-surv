@@ -1,22 +1,4 @@
--- Modificable user names
-local entity = {
-	initial_properties = {
-		physical = false,
-		collisionbox = {-0.125,-0.125,-0.125, 0.125,0.125,0.125},
-		visual = "sprite",
-		textures = {"blank.png"},
-		pointable = false,
-		static_save = false,
-	},
-	on_step = function(self)
-		local obj = self.object:get_attach()
-		if not obj then
-			self.object:remove()
-		end
-	end,
-}
-player_entities = {}
-core.register_entity("ehs_server:nametag", entity)
+
 local S = ehs.S
 ehs.vanish = {}
 local storage = ehs.storage
@@ -417,21 +399,27 @@ core.register_globalstep(function()
 --				color = color,
 			--})
 			if not ehs.vanish[name] then
-				p:set_properties({
-					nametag = afkis..Role.." "..core.colorize(color, name),
-					nametag_bgcolor = {a=0},
-					nametag_color = {a=255},
-					pointable = true,
-					visual_size = vector.new(1,1,1)
-				})
+				if ehs.vanish[name] ~= false then
+					p:set_properties({
+						nametag = afkis..Role.." "..core.colorize(color, name),
+						nametag_bgcolor = {a=0},
+						nametag_color = {a=255},
+						pointable = true,
+						visual_size = vector.new(1,1,1)
+					})
+					ehs.vanish = false
+				end
 			else
-				p:set_properties({
-					nametag = " ",
-					nametag_color = {a=0},
-					nametag_bgcolor = {a=0},
-					pointable = false,
-					visual_size = vector.new(0,0,0)
-				})
+				--if ehs.vanish[name] ~= false then
+					p:set_properties({
+						nametag = " ",
+						nametag_color = {a=0},
+						nametag_bgcolor = {a=0},
+						pointable = false,
+						visual_size = vector.new(0,0,0)
+					})
+				--	ehs.vanish[name] = false
+				--end
 			end
 			--player_entities[name] = obj
 		--end
