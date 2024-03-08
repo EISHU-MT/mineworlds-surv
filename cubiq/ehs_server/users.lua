@@ -407,7 +407,7 @@ core.register_globalstep(function()
 						pointable = true,
 						visual_size = vector.new(1,1,1)
 					})
-					ehs.vanish = false
+					ehs.vanish[name] = false
 				end
 			else
 				--if ehs.vanish[name] ~= false then
