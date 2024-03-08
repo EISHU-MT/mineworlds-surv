@@ -91,8 +91,6 @@ local function add_wield_entity(player, force)
 	if name and pos then
 		pos.y = pos.y + 0.5
 		local object = minetest.add_entity(pos, "wield3d:wield_entity")
-		local l = object:get_luaentity()
-		l.wielder = name
 		if object then
 			object:set_attach(player, location[1], location[2], location[3])
 			object:set_properties({
@@ -126,39 +124,30 @@ local wield_entity = {
 --function wield3d.do_reset_everyone_hand
 
 function wield_entity:on_step(dtime)
-	if self.wielder == nil then
+
+	self.timer = self.timer + dtime
+	if self.timer < 1 then
 		return
 	end
 	
-	self.timer = self.timer + dtime
-	if self.timer < update_time then
-		return
-	end
-	local player = minetest.get_player_by_name(self.wielder)
-	if player == nil or not player:is_player() or sq_dist(player:get_pos(), self.object:get_pos()) > 3 then
-		self.object:remove()
-		return
-	end
+	local attach = self.object:get_attach()
+	if not attach then self.object:remove() return end
+	
+	local player = attach
+	self.wielder = attach:get_player_name()
+	
 	local wield = player_wielding[self.wielder]
 	local stack = player:get_wielded_item()
 	local item = stack:get_name() or ""
 	if wield and item ~= wield.item then
-		if has_wieldview then
-			local def = minetest.registered_items[item] or {}
-			if def.inventory_image ~= "" then
-				item = ""
-			end
-		end
-		wield.item = item
+		player_wielding[self.wielder].item = item
 		if item == "" then
 			item = "wield3d:hand"
 		end
 		local loc = wield3d.location[item] or location
-		if loc[1] ~= wield.location[1] or
-				not vector.equals(loc[2], wield.location[2]) or
-				not vector.equals(loc[3], wield.location[3]) then
+		if loc[1] ~= wield.location[1] or not vector.equals(loc[2], wield.location[2]) or not vector.equals(loc[3], wield.location[3]) then
 			self.object:set_attach(player, loc[1], loc[2], loc[3])
-			wield.location = {loc[1], loc[2], loc[3]}
+			player_wielding[self.wielder].location = {loc[1], loc[2], loc[3]}
 		end
 		self.object:set_properties({
 			textures = {item},
@@ -185,6 +174,7 @@ local clock = 0
 core.register_globalstep(function(dt)
 	clock = clock + dt
 	if clock >= 1 then
+		print("eeee")
 		--for name, data in pairs(player_wielding) do
 		for _, p in pairs(core.get_connected_players()) do
 			if p:get_player_name() and player_wielding[p:get_player_name()] and not (player_wielding[p:get_player_name()].object or player_wielding[p:get_player_name()].object:get_yaw() == nil) then
