@@ -871,42 +871,6 @@ minetest.register_on_punchplayer(function(player, hitter, time_from_last_punch, 
 	end
 end)
 
-local oldf = minetest.is_protected
-
-function OnDigNodeTM(pos, name)
-	local f = faction.get_faction(Player(name))
-	--print(name, dump(name), dump(pos))
-	if f then
-		local fid, data = faction.get_faction_from_pos(pos)
-		if (fid and fid ~= "") and data then
-			if data.name ~= f.name then
-				if not f.allies[fid] then
-					if not (areas:canInteract(pos, name) or protector.can_dig(6, pos, name, false, 0)) then
-						for namee in paris(f.players) do
-							if Player(namee) then
-								hud_events.new(Player(namee), {
-									text = ehs.S("@1 tried to interact in our base territory!", name),
-									color = "warning",
-									quick = false,
-								})
-							end
-							return true
-						end
-					end
-				end
-			end
-		end
-	end
-	return oldf(pos, name)
-end
-
-minetest.register_on_mods_loaded(function()
-	core.after(3, function()
-		core.is_protected = OnDigNodeTM
-	end)
-end)
-
-
 
 
 
