@@ -422,9 +422,9 @@ local function add_wield_entity(player, force)
 	end
 	local name = player:get_player_name()
 	local pos = player:get_pos()
-	if name and pos and not (force or player_wieldingg[name]) then
+	if name and pos then
 		pos.y = pos.y + 0.5
-		local object = minetest.add_entity(pos, "offhand:wield_entity", name)
+		local object = minetest.add_entity(pos, "offhand:wield_entity")
 		if object then
 			object:set_attach(player, location[1], location[2], location[3], true)
 			object:set_properties({
@@ -435,6 +435,8 @@ local function add_wield_entity(player, force)
 		end
 	end
 end
+
+sttt = add_wield_entity
 
 local function sq_dist(a, b)
 	local x = a.x - b.x
@@ -452,33 +454,23 @@ local wield_entity = {
 	wielder2 = nil,
 	timer = 0,
 	static_save = false,
-	wield_hand2 = true
 }
 
-function wield_entity:on_activate(staticdata)
-	if staticdata and staticdata ~= "" then
-		self.wielder2 = staticdata
-		return
-	end
-	self.object:remove()
-end
+
 
 function wield_entity:on_step(dtime)
-	if self.wielder2 == nil then
+	self.timer = self.timer + dtime
+	if self.timer < 1 then
 		return
 	end
 	
-	self.timer = self.timer + dtime
-	if self.timer < update_time then
-		return
-	end
-	local player = minetest.get_player_by_name(self.wielder2)
-	if player == nil or not player:is_player() or
-			sq_dist(player:get_pos(), self.object:get_pos()) > 3 then
-		self.object:remove()
-		return
-	end
-	local wield = player_wieldingg[self.wielder2]
+	local attach = self.object:get_attach()
+	if not attach then self.object:remove() return end
+	
+	local player = attach
+	self.wielder2 = attach:get_player_name()
+	
+	local wield = player_wieldingg[attach:get_player_name()]
 	local stack = offhand.get_offhand(player)
 	local item = stack:get_name() or ""
 	if wield and item ~= wield.item then
@@ -490,7 +482,7 @@ function wield_entity:on_step(dtime)
 		end
 		wield.item = item
 		if item == "" then
-			item = "offhand:hand"
+			item = "default:dirt"
 		end
 		local loc = wield3dd.location[item] or location
 		if loc[1] ~= wield.location[1] or
@@ -507,19 +499,6 @@ function wield_entity:on_step(dtime)
 	self.timer = 0
 end
 
-local clock = 0
-core.register_globalstep(function(dt)
-	clock = clock + dt
-	if clock >= 1 then
-		for name, data in pairs(player_wieldingg) do
-			if not (data.object and data.object:get_yaw()) then
-				add_wield_entity(Player(name), true)
-				core.log("action", "ReAdding player wieldhand for: "..name)
-			end
-		end
-		clock = 0
-	end
-end)
 
 local function table_iter(t)
 	local i = 0
@@ -532,55 +511,21 @@ local function table_iter(t)
 	end
 end
 
-local player_iter = nil
---[[
-local function verify_wielditems()
-	if player_iter == nil then
-		local names = {}
-		local tmp = {}
-		for player in table_iter(minetest.get_connected_players()) do
-			local name = player:get_player_name()
-			if name then
-				tmp[name] = true;
-				table.insert(names, name)
+local clock = 0
+core.register_globalstep(function(dt)
+	clock = clock + dt
+	if clock >= 1 then
+		--for name, data in pairs(player_wielding) do
+		for _, p in pairs(core.get_connected_players()) do
+			if p:get_player_name() and player_wieldingg[p:get_player_name()] and not (player_wieldingg[p:get_player_name()].object or player_wieldingg[p:get_player_name()].object:get_yaw() == nil) then
+				add_wield_entity(Player(name), true)
+				core.log("action", "[Offhand] ReAdding player wieldhand for: "..name)
 			end
 		end
-		player_iter = table_iter(names)
-		-- clean-up player_wielding table
-		for name, wield in pairs(player_wielding) do
-			player_wielding[name] = tmp[name] and wield
-		end
+		--end
+		clock = 0
 	end
-	 -- only deal with one player per server step
-	local name = player_iter()
-	if name then
-		local player = minetest.get_player_by_name(name)
-		if player and player:is_player() then
-			local pos = player:get_pos()
-			pos.y = pos.y + 0.5
-			local wielding = false
-			local objects = minetest.get_objects_inside_radius(pos, 1)
-			for _, object in pairs(objects) do
-				local entity = object:get_luaentity()
-				if entity and entity.wielder2 == name then
-					if wielding then
-						-- remove duplicates
-						object:remove()
-					end
-					wielding = true
-				end
-			end
-			if not wielding then
-				player_wielding[name] = nil
-				add_wield_entity(player)
-			end
-		end
-		return minetest.after(0, verify_wielditems)
-	end
-	player_iter = nil
-	minetest.after(verify_time, verify_wielditems)
-end--]]
-
+end)--
 
 
 minetest.register_entity("offhand:wield_entity", wield_entity)
@@ -591,7 +536,9 @@ minetest.register_item("offhand:hand", {
 })
 
 core.register_on_joinplayer(function(player)
-	add_wield_entity(player)
+	core.after(1, function(player)
+		add_wield_entity(player)
+	end, player)
 end)
 core.register_on_leaveplayer(function(player)
 	player_wieldingg[player:get_player_name()] = nil
