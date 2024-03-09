@@ -29,9 +29,15 @@ ranks.register("contributor", {
 	staff = true,
 })
 
-ranks.register("guardian", {
-	prefix = rs("Guardian"),
+ranks.register("police", {
+	prefix = rs("Police"),
 	colour = {a = 255, r = 255, g = 132, b = 0},
+	staff = true,
+})
+
+ranks.register("veteranpolice", {
+	prefix = rs("Veteran Police"),
+	colour = {a = 255, r = 255, g = 89, b = 50},
 	staff = true,
 })
 
@@ -82,19 +88,29 @@ ranks.register("creative_man", {
 
 -- builders
 
+ranks.register("mini_builder", {
+	prefix = "Mini Builder",
+	colour = {a = 255, r = 16, g = 255, b = 0},
+})
+
+ranks.register("builder", {
+	prefix = "Builder",
+	colour = {a = 255, r = 126, g = 250, b = 216},
+})
+
 ranks.register("good_builder", {
 	prefix = "Good Builder",
 	colour = {a = 255, r = 4, g = 250, b = 2},
 })
 
-ranks.register("mega_builder", {
-	prefix = "Mega Builder",
-	colour = {a = 255, r = 246, g = 129, b = 3},
-})
-
 ranks.register("profeccional_builder", {
 	prefix = "Profeccional Builder",
 	colour = {a = 255, r = 250, g = 67, b = 8},
+})
+
+ranks.register("expert_builder", {
+	prefix = "Expert Builder",
+	colour = {a = 255, r = 255, g = 181, b = 0},
 })
 
 ranks.register("extreme_builder", {
@@ -117,3 +133,9 @@ ranks.register("supreme_builder", {
 	colour = {a = 255, r = 41, g = 39, b = 39},
 })
 
+
+ranks.register("militar", {
+	prefix = rs("Militar"),
+	colour = {a = 255, r = 255, g = 89, b = 50},
+	staff = true,
+})
