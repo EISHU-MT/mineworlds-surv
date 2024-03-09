@@ -397,8 +397,34 @@ local function health_tick()
 		if should_heal then
 			player:set_hp(hp + settings.heal, {type = "set_hp", cause = "stamina:heal"})
 			stamina.exhaust_player(player, settings.exhaust_lvl, stamina.exhaustion_reasons.heal)
+			core.add_particlespawner({
+				attached = Player(player),
+				minacc = vector.new(0,1,0),
+				maxacc = vector.new(0,2,0),
+				minpos = vector.new(0.5,0,0.5),
+				maxpos = vector.new(-0.5,1,-0.5),
+				time = 1,
+				amount = 2,
+				glow = 15,
+				expiration_time = 3,
+				texture = "mas_uno.png",
+				size = 3
+			})
 		elseif is_starving then
 			player:set_hp(hp - settings.starve, {type = "set_hp", cause = "stamina:starve"})
+			core.add_particlespawner({
+				attached = Player(player),
+				minacc = vector.new(0,-2,0),
+				maxacc = vector.new(0,-4,0),
+				minpos = vector.new(0.5,1,0.5),
+				maxpos = vector.new(-0.5,2,-0.5),
+				time = 1,
+				amount = 5,
+				glow = 15,
+				expiration_time = 3,
+				texture = "menos_uno.png",
+				size = 3
+			})
 		end
 	end
 end
