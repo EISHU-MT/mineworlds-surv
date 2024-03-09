@@ -169,7 +169,7 @@ local function table_iter(t)
 end
 
 local player_iter = nil
---[[
+--
 local clock = 0
 core.register_globalstep(function(dt)
 	clock = clock + dt
@@ -185,7 +185,7 @@ core.register_globalstep(function(dt)
 		--end
 		clock = 0
 	end
-end)--]]
+end)--
 
 minetest.register_entity("wield3d:wield_entity", wield_entity)
 
@@ -195,7 +195,9 @@ minetest.register_item("wield3d:hand", {
 })
 
 core.register_on_joinplayer(function(player)
-	add_wield_entity(player)
+	core.after(1, function(player)
+		add_wield_entity(player)
+	end, player)
 end)
 core.register_on_leaveplayer(function(player)
 	player_wielding[player:get_player_name()] = nil
