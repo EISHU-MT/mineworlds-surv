@@ -280,7 +280,7 @@ function base_mach.build_fs(machine)
 end
 
 function base_mach.build_infotext(machine)
-    return string.format('%s (%.1f%% heat): %s', machine.class.name, base_mach.heat_pct(machine), machine.status_text)
+    return string.format('%s (%.1f%% heat): %s', machine.class.name or "noname", base_mach.heat_pct(machine) or "0", machine.status_text or "off")
 end
 
 -- basic process display
