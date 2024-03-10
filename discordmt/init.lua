@@ -158,7 +158,9 @@ if irc_enabled then
 end
 
 discord.send("**==> Starting MineWorlds Survival <==**")
-discord.send("**==> Test Version, no modifying original server <==**")
+if EHS_Q then
+	discord.send("**==> Test Version, no modifying original server <==**")
+end
 
 minetest.register_on_mods_loaded(function()
 	core.after(1, function()
