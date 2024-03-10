@@ -81,6 +81,9 @@ minetest.register_on_joinplayer(function(ObjectRef, last_login)
     end
 	local str = "=> "..core.colorize(color, ObjectRef:get_player_name()).." has joined the server"
 	core.chat_send_all(str)
+	if ehs_net then
+		ehs_net.send("<= "..ObjectRef:get_player_name().." has joined the server")
+	end
 	--player_entities[Name(ObjectRef)] = obj
 end)
 
@@ -158,6 +161,9 @@ minetest.register_on_chat_message(function(name, message)
         ChatSendAll(text, name)
         if discord then
             discord.send("```md\n <" .. name .. ">  " .. message .. "```")
+            if ehs_net then
+                ehs_net.send("<"..name.."> " .. message)
+            end
         end
     end
 	return true
@@ -337,7 +343,11 @@ minetest.register_on_leaveplayer(function(player, t)
 	if t then s = " (timed out?)" end
     if discord then
             discord.send("```diff\n-- <= "..player:get_player_name().." left the server"..s.."```")
+            
     end
+	if ehs_net then
+		ehs_net.send("<= "..player:get_player_name().." left the server"..s)
+	end
 	local str = "<= "..core.colorize(color, player:get_player_name()).." left the server"..s
 	core.chat_send_all(str)
 	ehs.vanish[player:get_player_name()] = nil
