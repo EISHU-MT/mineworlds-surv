@@ -342,9 +342,23 @@ minetest.register_on_leaveplayer(function(player, t)
 	core.chat_send_all(str)
 	ehs.vanish[player:get_player_name()] = nil
 end)
-core.register_globalstep(function()
+
+local clock = 0
+
+core.register_globalstep(function(dt)
 	local playername_data = core.deserialize(storage:get_string("playername"))
 	local nametags_data = core.deserialize(storage:get_string("color"))
+	
+	-- Clock section
+	clock = clock + dt
+	if clock >= 120 then
+		local count = #core.get_connected_players()
+		local names = {}
+		for _,p in pairs(core.get_connected_players()) do table.insert(names,p:get_player_name()) end
+		core.chat_send_all(core.colorize("#00BA00", "[Server] "..table.concat(names, ", ").." users connected, total: "..tostring(count)))
+		clock = 0
+	end
+		
 	for _, p in pairs(core.get_connected_players()) do
 		--p:set_nametag_attributes({text=nil,color=nil})
 		local name = Name(p)
