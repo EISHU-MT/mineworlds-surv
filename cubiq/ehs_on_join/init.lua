@@ -4,6 +4,9 @@
 
 minetest.register_on_newplayer(function(ObjectRef)
 	core.chat_send_all(ObjectRef:get_player_name().." se ha unido por primera ves! Di hola / "..ObjectRef:get_player_name().." has joined the server for the first time, say hi!")
+	if discord then
+		discord.send("```md\n>>> "..ObjectRef:get_player_name().." joined the server for the first time!")
+	end
 end)
 --[[
 minetest.register_on_authplayer(function(name, ip, is_success)
