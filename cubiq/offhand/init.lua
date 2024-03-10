@@ -482,7 +482,7 @@ function wield_entity:on_step(dtime)
 		end
 		wield.item = item
 		if item == "" then
-			item = "default:dirt"
+			item = "offhand:hand"
 		end
 		local loc = wield3dd.location[item] or location
 		if loc[1] ~= wield.location[1] or
