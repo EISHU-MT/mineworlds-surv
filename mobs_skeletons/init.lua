@@ -37,6 +37,8 @@ local sunlight = minetest.settings:get_bool("mobs_skeletons.sunlight_kill") == t
 local light_damage_min = sunlight and 14 or (default.LIGHT_MAX / 2)
 local light_damage_max = sunlight and 16 or (default.LIGHT_MAX + 1)
 
+SpawnPos = minetest.get_world_spawnpoint() or vector.new(0,0,0)
+
 -- Sounds
 local sounds = {
 	random = "mobs_skeletons_skeleton_random",
@@ -190,6 +192,15 @@ mobs:register_mob("mobs_skeletons:skeleton", {
 
 	on_spawn = function(self)
 		self.light_damage = mobs_skeletons.fn_DamagePerSecond(self)
+	end,
+	
+	do_custom = function(self)
+		if self and self.object and self.object:get_yaw() then
+			local pos = self.object:get_pos()
+			if vector.distance(pos, SpawnPos) <= 20 then
+				self.object:remove()
+			end
+		end
 	end
 })
 
@@ -260,6 +271,14 @@ mobs:register_mob("mobs_skeletons:skeleton_archer", {
 
 	on_spawn = function(self)
 		self.light_damage = mobs_skeletons.fn_DamagePerSecond(self)
+	end,
+	do_custom = function(self)
+		if self and self.object and self.object:get_yaw() then
+			local pos = self.object:get_pos()
+			if vector.distance(pos, SpawnPos) <= 20 then
+				self.object:remove()
+			end
+		end
 	end
 })
 
@@ -331,6 +350,14 @@ mobs:register_mob("mobs_skeletons:skeleton_archer_dark", {
 
 	on_spawn = function(self)
 		self.light_damage = mobs_skeletons.fn_DamagePerSecond(self)
+	end,
+	do_custom = function(self)
+		if self and self.object and self.object:get_yaw() then
+			local pos = self.object:get_pos()
+			if vector.distance(pos, SpawnPos) <= 20 then
+				self.object:remove()
+			end
+		end
 	end
 })
 
