@@ -1,4 +1,4 @@
-ehs_net = {}
+
 local http = minetest.request_http_api()
 local settings = minetest.settings
 
@@ -7,6 +7,8 @@ core.log("action", "[EHS] Loading EHS Net plugin")
 if not http then core.log("error", "[EHS] Network Connection error!") return end
 
 local timeout = 10
+
+ehs_net = {}
 
 function ehs_net.send(message)
 	local data = {
