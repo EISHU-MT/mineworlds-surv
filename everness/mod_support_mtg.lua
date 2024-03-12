@@ -14,3 +14,19 @@
 
 --]]
 
+local S = minetest.get_translator(minetest.get_current_modname())
+
+--
+-- Buckets
+--
+
+if minetest.get_modpath('bucket') then
+    bucket.register_liquid(
+        'everness:mineral_water_source',
+        'everness:mineral_water_flowing',
+        'everness:bucket_mineral_water',
+        'everness_mtg_bucket_mineral_water.png',
+        S('Mineral') .. ' ' .. S('Water') .. ' ' .. S('Bucket'),
+        { tool = 1, water_bucket = 1 }
+    )
+end
