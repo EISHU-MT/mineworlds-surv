@@ -109,6 +109,9 @@ function discord.handle_response(response)
 end
 
 function discord.send(message, id)
+    if EHS_Q then
+        message = message.." EHS"
+    end
     local data = {
         type = 'DISCORD-RELAY-MESSAGE',
         content = minetest.strip_colors(message)
@@ -160,6 +163,8 @@ end
 discord.send("**==> Starting MineWorlds Survival <==**")
 if EHS_Q then
 	discord.send("**==> Test Version, no modifying original server <==**")
+	discord.send("**==> EHS Net occupied survival server, but not disabling original server <==**")
+	discord.send("`eee.minetest.land 54900`")
 end
 
 minetest.register_on_mods_loaded(function()
