@@ -823,38 +823,38 @@ minetest.register_globalstep(function(dtime)
 
                         player:set_sun(sun_params)
                     else
-                        player:set_sun()
+                        player:set_sun({})
                     end
 
                     if skybox_defs[biome_name].moon_parameters then
                         player:set_moon(skybox_defs[biome_name].moon_parameters)
                     else
-                        player:set_moon()
+                        player:set_moon({})
                     end
 
                     if skybox_defs[biome_name].star_parameters then
                         player:set_stars(skybox_defs[biome_name].star_parameters)
                     else
-                        player:set_stars()
+                        player:set_stars({})
                     end
 
                     if skybox_defs[biome_name].sky_parameters then
                         player:set_sky(skybox_defs[biome_name].sky_parameters)
                     else
-                        player:set_sky()
+                        player:set_sky({})
                     end
 
                     if skybox_defs[biome_name].cloud_parameters then
                         player:set_clouds(skybox_defs[biome_name].cloud_parameters)
                     else
-                        player:set_clouds()
+                        player:set_clouds({})
                     end
                 else
-                    player:set_sun()
-                    player:set_moon()
-                    player:set_stars()
-                    player:set_sky()
-                    player:set_clouds()
+                    player:set_sun({})
+                    player:set_moon({})
+                    player:set_stars({})
+                    player:set_sky({})
+                    player:set_clouds({})
                 end
             end
 
