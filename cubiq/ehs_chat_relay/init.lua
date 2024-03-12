@@ -47,7 +47,7 @@ minetest.register_globalstep(function(dtime)
 				url = 'eee.minetest.land:4000',
 				timeout = timeout,
 				post_data = minetest.write_json({
-					type = 'request_data_QQ'
+					type = 'GetCreativeMsgs'
 				})
 			}, ehs_net.handle)
 			timer = 0
