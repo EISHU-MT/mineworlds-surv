@@ -87,12 +87,14 @@ minetest.register_on_joinplayer(function(player)
     end
 end)
 
-unified_inventory.register_button("pvp", {
-	type = "image",
-	image = "default_tool_steelsword.png",
-	tooltip = S("PvP"),
-	hide_lite=true,
-	action = function(p)
-		toggle_pvp(p)
-	end
-})
+if unidied_inventory then
+	unified_inventory.register_button("pvp", {
+		type = "image",
+		image = "default_tool_steelsword.png",
+		tooltip = S("PvP"),
+		hide_lite=true,
+		action = function(p)
+			toggle_pvp(p)
+		end
+	})
+end
