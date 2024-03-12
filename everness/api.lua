@@ -1161,9 +1161,9 @@ function Everness.populate_loot_chests(self, positions, params)
 
         if inv then
             table.insert(inventories, inv)
-            string_positions = string_positions .. ' ' .. pos:to_string()
+            string_positions = string_positions .. ' ' .. core.pos_to_string(pos)
         else
-            minetest.log('warning', '[Everness] FAILED to populate loot chests inventory at ' .. pos:to_string())
+            minetest.log('warning', '[Everness] FAILED to populate loot chests inventory at ' .. core.pos_to_string(pos))
         end
     end
 
