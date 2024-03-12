@@ -76,7 +76,7 @@ function send_death_message(cause, victim, killer)
             end
         end
 
-        minetest.chat_send_all(core.colorize("lightorange", "[Server] "..death_message)
+        minetest.chat_send_all(core.colorize("lightorange", "[Server] "..death_message))
     end
 end
 
