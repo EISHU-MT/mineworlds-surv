@@ -56,6 +56,7 @@ other = {
 
 function send_death_message(cause, victim, killer)
     meta = victim:get_meta()
+    if not meta then return end
     show_death_messages = meta:get_string('show_death_messages')
 
     if show_death_messages == '' or show_death_messages == 'yes' then
@@ -75,7 +76,7 @@ function send_death_message(cause, victim, killer)
             end
         end
 
-        minetest.chat_send_all(death_message)
+        minetest.chat_send_all(core.colorize("lightorange", "[Server] "..death_message)
     end
 end
 
