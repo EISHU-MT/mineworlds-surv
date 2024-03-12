@@ -180,7 +180,30 @@ Everness:register_tool('everness:pick_archeological', {
     },
 })
 
-
+Everness:register_tool('everness:shovel_silk', {
+    description = S('Silk Shovel'),
+    inventory_image = 'everness_shovel_silk.png',
+    wield_image = 'everness_shovel_silk.png^[transformR90',
+    wield_scale = { x = 2, y = 2, z = 1 },
+    tool_capabilities = {
+        full_punch_interval = 1.0,
+        max_drop_level = 1,
+        groupcaps = {
+            crumbly = { times = { [1] = 1.10,[2] = 0.50,[3] = 0.30 }, uses = 30, maxlevel = 3 },
+        },
+        damage_groups = { fleshy = 4 },
+    },
+    sound = {
+        breaks = 'everness_tool_breaks'
+    },
+    -- no `shovel` group so it cannot be enchanted
+    -- groups = { shovel = 1 }
+    -- MCL
+    _mcl_toollike_wield = true,
+    _mcl_diggroups = {
+        shovely = { speed = 8, level = 5, uses = 1562 }
+    },
+})
 
 local old_handle_node_drops = minetest.handle_node_drops
 
