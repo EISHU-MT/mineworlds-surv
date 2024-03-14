@@ -61,6 +61,8 @@ end
 
 function farming.hoe_on_use(itemstack, user, pointed_thing, uses)
 
+	uses = uses or 500
+
 	local pt = pointed_thing
 
 	-- am I going to hoe the top of a dirt node?
