@@ -26,7 +26,7 @@ discord.chat_send_all = minetest.chat_send_all
 
 -- Allow the chat message format to be customised by other mods
 function discord.format_chat_message(name, msg)
-    return ('<%s@Discord> %s'):format(name, msg)
+    return core.colorize("#1DC0C0", ("[Discord] <%s> %s"):format(name, msg)) --('<%s@Discord> %s'):format(name, msg)
 end
 
 function discord.handle_response(response)
