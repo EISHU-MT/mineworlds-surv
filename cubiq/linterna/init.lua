@@ -109,7 +109,7 @@ minetest.register_globalstep(function(dtime)
 			if not flashlight_holding[player:get_player_name()] then
 				if not flashlight_holding_reverse[player:get_player_name()] then
 					if (wield:get_name():match("linterna")) or (Owield and Owield:get_name() == "linterna:flashlight_on") then
-						wield:set_name(minetest.registered_items[wield:get_name()]._alternate)
+						wield:set_name(minetest.registered_items[wield:get_name()]._alternate or wield:get_name())
 						start_recharge(player)
 						player:set_wielded_item(wield)
 						flashlight_holding_reverse[player:get_player_name()] = true
