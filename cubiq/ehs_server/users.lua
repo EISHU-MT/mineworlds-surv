@@ -362,10 +362,10 @@ core.register_globalstep(function(dt)
 	-- Clock section
 	clock = clock + dt
 	if clock >= 120 then
-		local count = #core.get_connected_players()
+		local count = #core.get_connected_players() or 0
 		local names = {}
 		for _,p in pairs(core.get_connected_players()) do table.insert(names,p:get_player_name()) end
-		core.chat_send_all(core.colorize("#00BA00", "[Server] "..table.concat(names, ", ").." users connected, total: "..tostring(count)))
+		core.chat_send_all(core.colorize("#00BA00", "[Server] "..tostring(count).." users connected, players: "..table.concat(names, ", ")))
 		clock = 0
 	end
 		
