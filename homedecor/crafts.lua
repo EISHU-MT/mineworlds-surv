@@ -21,12 +21,10 @@ minetest.register_craftitem("homedecor:paraffin", {
         inventory_image = "homedecor_paraffin.png",
 })
 
-minetest.register_alias("homedecor:plastic_base", "homedecor:paraffin")
+minetest.register_alias_force("homedecor:paraffin", "basic_materials:paraffin")
+minetest.register_alias_force("homedecor:plastic_sheeting", "basic_materials:plastic_sheet")
 
-minetest.register_craftitem("homedecor:plastic_sheeting", {
-        description = S("Plastic sheet"),
-        inventory_image = "homedecor_plastic_sheeting.png",
-})
+
 
 minetest.register_craftitem("homedecor:plastic_strips", {
         description = S("Plastic strips"),
@@ -192,34 +190,34 @@ minetest.register_craft( {
 minetest.register_craft( {
     output = "homedecor:fan_blades 2",
     recipe = {
-		{ "", "homedecor:plastic_sheeting", "" },
+		{ "", "basic_materials:plastic_sheet", "" },
 		{ "", "default:steel_ingot", "" },
-		{ "homedecor:plastic_sheeting", "", "homedecor:plastic_sheeting" }
+		{ "basic_materials:plastic_sheet", "", "basic_materials:plastic_sheet" }
     },
 })
 
 minetest.register_craft( {
     output = "homedecor:steel_wire 4",
     recipe = {
-		{ "", "homedecor:plastic_sheeting", "" },
-		{ "default:steel_ingot", "homedecor:plastic_sheeting", "default:steel_ingot" },
-		{ "", "homedecor:plastic_sheeting", "" }
+		{ "", "basic_materials:plastic_sheet", "" },
+		{ "default:steel_ingot", "basic_materials:plastic_sheet", "default:steel_ingot" },
+		{ "", "basic_materials:plastic_sheet", "" }
     },
 })
 
 minetest.register_craft( {
     output = "homedecor:copper_wire 4",
     recipe = {
-		{ "", "homedecor:plastic_sheeting", "" },
-		{ "default:copper_ingot", "homedecor:plastic_sheeting", "default:copper_ingot" },
-		{ "", "homedecor:plastic_sheeting", "" }
+		{ "", "basic_materials:plastic_sheet", "" },
+		{ "default:copper_ingot", "basic_materials:plastic_sheet", "default:copper_ingot" },
+		{ "", "basic_materials:plastic_sheet", "" }
     },
 })
 
 minetest.register_craft( {
     output = "homedecor:plastic_strips 3",
     recipe = {
-		{ "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" }
+		{ "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" }
     },
 })
 
@@ -233,9 +231,9 @@ minetest.register_craft( {
 minetest.register_craft( {
     output = "homedecor:motor 2",
     recipe = {
-		{ "default:mese_crystal_fragment", "homedecor:copper_wire", "homedecor:plastic_sheeting" },
+		{ "default:mese_crystal_fragment", "homedecor:copper_wire", "basic_materials:plastic_sheet" },
 		{ "default:copper_ingot", "default:steel_ingot", "default:steel_ingot" },
-		{ "default:mese_crystal_fragment", "homedecor:copper_wire", "homedecor:plastic_sheeting" }
+		{ "default:mese_crystal_fragment", "homedecor:copper_wire", "basic_materials:plastic_sheet" }
     },
 })
 
@@ -299,7 +297,7 @@ minetest.register_craft( {
 
 minetest.register_craft({
         type = "cooking",
-        output = "homedecor:plastic_sheeting",
+        output = "basic_materials:plastic_sheet",
         recipe = "homedecor:paraffin",
 })
 
@@ -313,7 +311,7 @@ minetest.register_craft({
 
 minetest.register_craft({
         type = "fuel",
-        recipe = "homedecor:plastic_sheeting",
+        recipe = "basic_materials:plastic_sheet",
         burntime = 30,
 })
 
@@ -321,8 +319,8 @@ minetest.register_craft( {
         output = "homedecor:flower_pot_green",
         recipe = {
                 { "", "dye:dark_green", "" },
-                { "homedecor:plastic_sheeting", "default:dirt", "homedecor:plastic_sheeting" },
-                { "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
+                { "basic_materials:plastic_sheet", "default:dirt", "basic_materials:plastic_sheet" },
+                { "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
         },
 })
 
@@ -330,8 +328,8 @@ minetest.register_craft( {
         output = "homedecor:flower_pot_black",
         recipe = {
                 { "dye:black", "dye:black", "dye:black" },
-                { "homedecor:plastic_sheeting", "default:dirt", "homedecor:plastic_sheeting" },
-                { "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
+                { "basic_materials:plastic_sheet", "default:dirt", "basic_materials:plastic_sheet" },
+                { "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
         },
 })
 
@@ -341,8 +339,8 @@ minetest.register_craft( {
         output = "homedecor:projection_screen 3",
         recipe = {
 		{ "", "default:glass", "" },
-                { "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
-                { "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
+                { "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
+                { "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
         },
 })
 
@@ -454,7 +452,7 @@ minetest.register_craft( {
         recipe = {
                 { "building_blocks:gravel_spread", "dye:black", "building_blocks:gravel_spread" },
                 { "group:sand", "dye:black", "group:sand" },
-                { "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
+                { "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
         },
 })
 
@@ -674,8 +672,8 @@ minetest.register_craft( {
 minetest.register_craft( {
 	output = "homedecor:television",
 	recipe = {
-		{ "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
-		{ "homedecor:plastic_sheeting", "moreblocks:glow_glass", "homedecor:plastic_sheeting" },
+		{ "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
+		{ "basic_materials:plastic_sheet", "moreblocks:glow_glass", "basic_materials:plastic_sheet" },
 		{ "homedecor:ic", "homedecor:ic", "homedecor:ic" },
 	},
 })
@@ -683,8 +681,8 @@ minetest.register_craft( {
 minetest.register_craft( {
 	output = "homedecor:television",
 	recipe = {
-		{ "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
-		{ "homedecor:plastic_sheeting", "default:glass", "homedecor:plastic_sheeting" },
+		{ "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
+		{ "basic_materials:plastic_sheet", "default:glass", "basic_materials:plastic_sheet" },
 		{ "homedecor:ic", "homedecor:power_crystal", "homedecor:ic" },
 	},
 })
@@ -692,8 +690,8 @@ minetest.register_craft( {
 minetest.register_craft( {
 	output = "homedecor:stereo",
 	recipe = {
-		{ "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
-		{ "homedecor:plastic_sheeting", "homedecor:ic", "homedecor:plastic_sheeting" },
+		{ "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
+		{ "basic_materials:plastic_sheet", "homedecor:ic", "basic_materials:plastic_sheet" },
 		{ "default:steel_ingot", "homedecor:ic", "default:steel_ingot" },
 	},
 })
@@ -1242,7 +1240,7 @@ minetest.register_craft({
     recipe = {
 		{"", "default:glass", ""},
 		{"default:glass", "default:copper_ingot", "default:glass"},
-		{"homedecor:plastic_sheeting", "homedecor:power_crystal", "homedecor:plastic_sheeting"}
+		{"basic_materials:plastic_sheet", "homedecor:power_crystal", "basic_materials:plastic_sheet"}
 	}
 })
 
@@ -1902,7 +1900,7 @@ minetest.register_craft({
 minetest.register_craft({
         output = "homedecor:fishtank",
         recipe = {
-			{ "homedecor:plastic_sheeting", "homedecor:glowlight_small_cube", "homedecor:plastic_sheeting" },
+			{ "basic_materials:plastic_sheet", "homedecor:glowlight_small_cube", "basic_materials:plastic_sheet" },
 			{ "default:glass", "bucket:bucket_water", "default:glass" },
 			{ "default:glass", "building_blocks:gravel_spread", "default:glass" },
         },
@@ -1982,9 +1980,9 @@ minetest.register_craft({
 minetest.register_craft({
     output = "homedecor:analog_clock_plastic 2",
     recipe = {
-		{ "homedecor:plastic_sheeting", "dye:black", "homedecor:plastic_sheeting" },
-		{ "homedecor:plastic_sheeting", "homedecor:ic", "homedecor:plastic_sheeting" },
-		{ "homedecor:plastic_sheeting", "dye:black", "homedecor:plastic_sheeting" },
+		{ "basic_materials:plastic_sheet", "dye:black", "basic_materials:plastic_sheet" },
+		{ "basic_materials:plastic_sheet", "homedecor:ic", "basic_materials:plastic_sheet" },
+		{ "basic_materials:plastic_sheet", "dye:black", "basic_materials:plastic_sheet" },
     },
 })
 
@@ -2000,18 +1998,18 @@ minetest.register_craft({
 minetest.register_craft({
     output = "homedecor:digital_clock 2",
     recipe = {
-		{ "homedecor:plastic_sheeting", "default:paper", "homedecor:plastic_sheeting" },
-		{ "homedecor:plastic_sheeting", "homedecor:ic", "homedecor:plastic_sheeting" },
-		{ "homedecor:plastic_sheeting", "homedecor:power_crystal", "homedecor:plastic_sheeting" },
+		{ "basic_materials:plastic_sheet", "default:paper", "basic_materials:plastic_sheet" },
+		{ "basic_materials:plastic_sheet", "homedecor:ic", "basic_materials:plastic_sheet" },
+		{ "basic_materials:plastic_sheet", "homedecor:power_crystal", "basic_materials:plastic_sheet" },
     },
 })
 
 minetest.register_craft({
     output = "homedecor:alarm_clock",
     recipe = {
-		{ "homedecor:plastic_sheeting", "homedecor:speaker_driver", "homedecor:plastic_sheeting" },
-		{ "homedecor:plastic_sheeting", "homedecor:digital_clock", "homedecor:plastic_sheeting" },
-		{ "homedecor:plastic_sheeting", "homedecor:power_crystal", "homedecor:plastic_sheeting" },
+		{ "basic_materials:plastic_sheet", "homedecor:speaker_driver", "basic_materials:plastic_sheet" },
+		{ "basic_materials:plastic_sheet", "homedecor:digital_clock", "basic_materials:plastic_sheet" },
+		{ "basic_materials:plastic_sheet", "homedecor:power_crystal", "basic_materials:plastic_sheet" },
     },
 })
 
@@ -2101,16 +2099,16 @@ minetest.register_craft({
 minetest.register_craft({
     output = "homedecor:vcr 2",
     recipe = {
-		{ "homedecor:ic", "default:steel_ingot", "homedecor:plastic_sheeting" },
+		{ "homedecor:ic", "default:steel_ingot", "basic_materials:plastic_sheet" },
 		{ "default:iron_lump", "default:iron_lump", "default:iron_lump" },
-		{ "homedecor:plastic_sheeting", "", "homedecor:plastic_sheeting" },
+		{ "basic_materials:plastic_sheet", "", "basic_materials:plastic_sheet" },
     },
 })
 
 minetest.register_craft({
     output = "homedecor:dvd_player 2",
     recipe = {
-		{ "", "homedecor:plastic_sheeting", "" },
+		{ "", "basic_materials:plastic_sheet", "" },
 		{ "default:obsidian_glass", "homedecor:motor", "homedecor:motor" },
 		{ "default:mese_crystal_fragment", "homedecor:ic", "homedecor:power_crystal" },
     },
@@ -2119,7 +2117,7 @@ minetest.register_craft({
 minetest.register_craft({
     output = "homedecor:dvd_player 2",
     recipe = {
-		{ "", "homedecor:plastic_sheeting", "" },
+		{ "", "basic_materials:plastic_sheet", "" },
 		{ "default:obsidian_glass", "technic:motor", "technic:motor" },
 		{ "default:mese_crystal_fragment", "homedecor:ic", "homedecor:power_crystal" },
     },
@@ -2137,7 +2135,7 @@ minetest.register_craft({
 minetest.register_craft({
     output = "homedecor:blinds_thin",
     recipe = {
-		{ "group:stick", "homedecor:plastic_sheeting", "group:stick" },
+		{ "group:stick", "basic_materials:plastic_sheet", "group:stick" },
 		{ "farming:string", "homedecor:plastic_strips", "" },
 		{ "", "homedecor:plastic_strips", "" },
     },
@@ -2146,7 +2144,7 @@ minetest.register_craft({
 minetest.register_craft({
     output = "homedecor:blinds_thick",
     recipe = {
-		{ "group:stick", "homedecor:plastic_sheeting", "group:stick" },
+		{ "group:stick", "basic_materials:plastic_sheet", "group:stick" },
 		{ "farming:string", "homedecor:plastic_strips", "homedecor:plastic_strips" },
 		{ "", "homedecor:plastic_strips", "homedecor:plastic_strips" },
     },
@@ -2172,9 +2170,9 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = "homedecor:space_heater",
         recipe = {
-			{"homedecor:plastic_sheeting", "homedecor:heating_element", "homedecor:plastic_sheeting"},
-			{"homedecor:plastic_sheeting", "homedecor:fan_blades", "homedecor:motor"},
-			{"homedecor:plastic_sheeting", "homedecor:heating_element", "homedecor:plastic_sheeting"}
+			{"basic_materials:plastic_sheet", "homedecor:heating_element", "basic_materials:plastic_sheet"},
+			{"basic_materials:plastic_sheet", "homedecor:fan_blades", "homedecor:motor"},
+			{"basic_materials:plastic_sheet", "homedecor:heating_element", "basic_materials:plastic_sheet"}
         },
 })
 
@@ -2218,18 +2216,18 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = "homedecor:power_outlet",
         recipe = {
-			{"homedecor:plastic_sheeting", "homedecor:copper_strip"},
-			{"homedecor:plastic_sheeting", ""},
-			{"homedecor:plastic_sheeting", "homedecor:copper_strip"}
+			{"basic_materials:plastic_sheet", "homedecor:copper_strip"},
+			{"basic_materials:plastic_sheet", ""},
+			{"basic_materials:plastic_sheet", "homedecor:copper_strip"}
         },
 })
 
 minetest.register_craft( {
         output = "homedecor:light_switch",
         recipe = {
-			{"", "homedecor:plastic_sheeting", "homedecor:copper_strip"},
-			{"homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:copper_strip"},
-			{"", "homedecor:plastic_sheeting", "homedecor:copper_strip"}
+			{"", "basic_materials:plastic_sheet", "homedecor:copper_strip"},
+			{"basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "homedecor:copper_strip"},
+			{"", "basic_materials:plastic_sheet", "homedecor:copper_strip"}
         },
 })
 
@@ -2322,7 +2320,7 @@ minetest.register_craft( {
         output = "homedecor:telephone",
         recipe = {
 			{ "homedecor:speaker_driver", "homedecor:copper_wire", "homedecor:speaker_driver" },
-			{ "homedecor:plastic_sheeting", "default:steel_ingot", "homedecor:plastic_sheeting" },
+			{ "basic_materials:plastic_sheet", "default:steel_ingot", "basic_materials:plastic_sheet" },
 			{ "default:steel_ingot", "default:steel_ingot", "default:steel_ingot" }
         },
 })
@@ -2491,18 +2489,18 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "homedecor:coffee_maker",
 	recipe = {
-	    {"homedecor:plastic_sheeting", "bucket:bucket_water", "homedecor:plastic_sheeting"},
-	    {"homedecor:plastic_sheeting", "default:glass", "homedecor:plastic_sheeting"},
-	    {"homedecor:plastic_sheeting", "homedecor:heating_element", "homedecor:plastic_sheeting"}
+	    {"basic_materials:plastic_sheet", "bucket:bucket_water", "basic_materials:plastic_sheet"},
+	    {"basic_materials:plastic_sheet", "default:glass", "basic_materials:plastic_sheet"},
+	    {"basic_materials:plastic_sheet", "homedecor:heating_element", "basic_materials:plastic_sheet"}
 	},
 })
 
 minetest.register_craft({
 	output = "homedecor:dartboard",
 	recipe = {
-	    {"dye:black", "homedecor:plastic_sheeting", "dye:white"},
-	    {"homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting"},
-	    {"dye:dark_green", "homedecor:plastic_sheeting", "dye:red"}
+	    {"dye:black", "basic_materials:plastic_sheet", "dye:white"},
+	    {"basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet"},
+	    {"dye:dark_green", "basic_materials:plastic_sheet", "dye:red"}
 	},
 })
 
@@ -2554,7 +2552,7 @@ minetest.register_craft({
 	output = "homedecor:office_chair_upscale",
 	recipe = {
 		{ "dye:black", "building_blocks:sticks", "group:wool" },
-		{ "homedecor:plastic_sheeting", "group:wool", "default:steel_ingot" },
+		{ "basic_materials:plastic_sheet", "group:wool", "default:steel_ingot" },
 		{ "building_blocks:sticks", "homedecor:pole_wrought_iron", "building_blocks:sticks" }
 	},
 })
@@ -2797,7 +2795,7 @@ minetest.register_craft({
 	recipe = {
 		{ "", "default:steel_ingot", "homedecor:glowlight_small_cube" },
 		{ "", "homedecor:steel_strip", "" },
-		{ "homedecor:plastic_sheeting", "homedecor:copper_wire", "homedecor:plastic_sheeting" },
+		{ "basic_materials:plastic_sheet", "homedecor:copper_wire", "basic_materials:plastic_sheet" },
 	},
 })
 
@@ -2831,8 +2829,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "homedecor:desk_globe",
 	recipe = {
-		{ "group:stick", "homedecor:plastic_sheeting", "dye:green" },
-		{ "group:stick", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
+		{ "group:stick", "basic_materials:plastic_sheet", "dye:green" },
+		{ "group:stick", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
 		{ "group:stick", "stairs:slab_wood", "dye:blue" }
 	},
 })
@@ -2840,8 +2838,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "homedecor:desk_globe",
 	recipe = {
-		{ "group:stick", "homedecor:plastic_sheeting", "dye:green" },
-		{ "group:stick", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
+		{ "group:stick", "basic_materials:plastic_sheet", "dye:green" },
+		{ "group:stick", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
 		{ "group:stick", "moreblocks:slab_wood", "dye:blue" }
 	},
 })
@@ -2859,17 +2857,17 @@ minetest.register_craft({
 	output = "homedecor:bathroom_set",
 	recipe = {
 		{ "", "homedecor:glass_table_small_round", "" },
-		{ "homedecor:plastic_sheeting", "homedecor:glass_table_small_round", "homedecor:plastic_sheeting" },
-		{ "group:stick", "homedecor:plastic_sheeting", "group:stick" }
+		{ "basic_materials:plastic_sheet", "homedecor:glass_table_small_round", "basic_materials:plastic_sheet" },
+		{ "group:stick", "basic_materials:plastic_sheet", "group:stick" }
 	},
 })
 
 minetest.register_craft({
 	output = "homedecor:trash_can_green",
 	recipe = {
-		{ "homedecor:plastic_sheeting", "", "homedecor:plastic_sheeting" },
-		{ "homedecor:plastic_sheeting", "dye:green", "homedecor:plastic_sheeting" },
-		{ "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" }
+		{ "basic_materials:plastic_sheet", "", "basic_materials:plastic_sheet" },
+		{ "basic_materials:plastic_sheet", "dye:green", "basic_materials:plastic_sheet" },
+		{ "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" }
 	},
 })
 
