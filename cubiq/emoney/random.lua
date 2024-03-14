@@ -16,8 +16,7 @@ end
 core.register_globalstep(function(dtime)
 	timer = timer + dtime
 	if timer >= 300 then
-		local amount = f(min, max)
-		local div = amount / get_count()
+		local div = math.floor(300) / get_count()
 		for _, p in pairs(core.get_connected_players()) do
 			bank.add_value(Name(p), math.floor(div))
 		end
