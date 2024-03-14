@@ -174,7 +174,6 @@ local clock = 0
 core.register_globalstep(function(dt)
 	clock = clock + dt
 	if clock >= 1 then
-		print("eeee")
 		--for name, data in pairs(player_wielding) do
 		for _, p in pairs(core.get_connected_players()) do
 			if p:get_player_name() and player_wielding[p:get_player_name()] and not (player_wielding[p:get_player_name()].object or player_wielding[p:get_player_name()].object:get_yaw() == nil) then
